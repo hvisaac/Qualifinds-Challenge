@@ -2,7 +2,7 @@ const mongodb = require('mongoose');
 const currency = require('../models/currency');
 
 const findAllCurrencys = (req, res) => {
-    currency.find((err, currency) => {
+    currency.find((err, currencys) => {
         err && res.send(500).send(err.message);
 
         res.status(200).json(currencys);
@@ -21,10 +21,10 @@ const addcurrency = (req, res) => {
     let query = new currency({
         currency: req.body.currency,
         exchange_price: req.body.exchange_price,   
-        available_money: requ.body.available_money
+        available_money: req.body.available_money
     })
 
-    currency.save((err, usr) => {
+    query.save((err, usr) => {
         err && res.status(500).send(err.message);
         
         res.status(200).json(usr);

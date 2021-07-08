@@ -15,7 +15,7 @@ mongoose.connect(
     (err, res) => {
         err && console.log("error: conect database failed");
         app.listen(4000, () => {
-            console.log("server conect successfully");
+            console.log("server conect to port http://localhost:4000");
         }); 
     }
 );
