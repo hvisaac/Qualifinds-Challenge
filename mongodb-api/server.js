@@ -17,10 +17,27 @@ mongoose.connect(
     (err, res) => {
         err && console.log("error: conect database failed");
 
+        const rateSchema = {
+            currency: String,
+            AUD: String,
+            CAD: String,
+            CHF: String,
+            GBP: String,
+            JPY: String,
+            USD: String,
+            NZD: String,
+            EUR: String
+        }
+
+        const Rate = mongoose.model('Rate', rateSchema);
+
         app.get('/', (req, res) => {
-
-            res.render('index')
-
+            Rate.find({}, function(err, rates) {
+                res.render('index', {
+                    ratesList: rates,
+                    cotize_amount: 0,                          
+                })
+            })
         })
 
         app.listen(4000, () => {

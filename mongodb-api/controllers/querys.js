@@ -33,6 +33,7 @@ const addquery = (req, res) => {
         
         res.status(200).json(usr);
     }) 
-};
+}
+
 
 module.exports = { findAllQuerys, findByID, addquery };
