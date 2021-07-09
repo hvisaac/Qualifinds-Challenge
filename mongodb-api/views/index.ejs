@@ -1,17 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    <% currenciesList.forEach(currency => {%>
-        <li>
-            <a> <%= currency.currency %> </a>
-            <a> <%= currency.available_money %> </a>
-        </li>
-    <%})%>
+    <form action="/api/querys/add" method="POST">
+        <input type="text" placeholder="Name" name="name">
+        <br>
+        <input type="text" placeholder="Number" name="number">
+        <br>
+        <br>
+        <select id="currency" name="currency">
+            <option disabled selected> Select a currency </option>
+            <option value="USD"> USD </option>
+            <option value="EUR"> EUR </option>
+            <option value="JPY"> JPY </option>
+            <option value="GBP"> GBP </option>
+            <option value="CHF"> CHF </option>
+            <option value="AUD"> AUD </option>
+            <option value="CAD"> CAD </option>
+            <option value="NZD"> NZD </option>
+        </select>
+        <label> amount </label>
+        <input name="currency_amount" value="1">
+        <br>
+        <select id="cotize" name="cotize">
+            <option disabled selected> Select a currency to cotize </option>
+            <option value="USD"> USD </option>
+            <option value="EUR"> EUR </option>
+            <option value="JPY"> JPY </option>
+            <option value="GBP"> GBP </option>
+            <option value="CHF"> CHF </option>
+            <option value="AUD"> AUD </option>
+            <option value="CAD"> CAD </option>
+            <option value="NZD"> NZD </option>
+        </select>
+        <label> cotize amount 12 </label>
+        <input type="hidden" name="cotize_amount" value="12">
+        <br>
+        <label> the difference between the two currencies is </label>
+        <br>
+        <br>
+        <label> Available money 3</label> <input type="hidden" value="3" name="available_money">
+        <br>
+        <button> Exchange Currency </button>
+    </form>
 </body>
+
 </html>
