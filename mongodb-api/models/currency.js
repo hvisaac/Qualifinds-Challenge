@@ -3,8 +3,7 @@ const Schema = mongoose.Schema;
 
 const currencySchema = new Schema(
     { 
-        currency: { type: String },
-        exchange_price: { type: String },      
+        currency: { type: String },   
         available_money: { type: String }
     }
 );

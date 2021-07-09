@@ -20,7 +20,6 @@ const findByID = (req,res) => {
 const addcurrency = (req, res) => {
     let query = new currency({
         currency: req.body.currency,
-        exchange_price: req.body.exchange_price,   
         available_money: req.body.available_money
     })
 
