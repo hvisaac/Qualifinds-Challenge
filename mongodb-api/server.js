@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const Querys = require('./api/querys');
+const Currencys = require('./api/currencys');
 
 const app = express();
 const ejs = require('ejs');
@@ -10,6 +11,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use('/api/querys', Querys);
+app.use('/api/currencys', Currencys);
 
 mongoose.connect(
     "mongodb://localhost:27017/Qualitifinds-Challenge",
@@ -29,13 +31,33 @@ mongoose.connect(
             EUR: String
         }
 
-        const Rate = mongoose.model('Rate', rateSchema);
+        const currencySchema = {
+            currency: String,
+            available_money: String
+        }
 
-        app.get('/', (req, res) => {
-            Rate.find({}, function(err, rates) {
-                res.render('index', {
+        const Rate = mongoose.model('Rate', rateSchema);
+        const Currency = mongoose.model('Currency', currencySchema);
+
+        app.get('/calculate', (req, res) => {
+
+            Rate.find({}, function (err, rates) {
+                res.render('calculate', {
                     ratesList: rates,
-                    cotize_amount: 0,                          
+                    cotize_amount: 0,
+                })
+            })
+
+        })
+
+        app.post('/exchange', function (req, res) {
+            Currency.find({currency: req.body.cotize}, function (err, currencies) {           
+                res.render('exchange', {
+                    currenciesList: currencies,
+                    currency: req.body.currency,
+                    cotize: req.body.cotize,
+                    currency_amount: req.body.currency_amount,
+                    cotize_amount: req.body.cotize_amount
                 })
             })
         })
