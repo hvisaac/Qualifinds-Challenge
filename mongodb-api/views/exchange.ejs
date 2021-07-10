@@ -73,9 +73,7 @@
 <body onload="available_money()">
     <form action="/add" method="POST">
         <% currenciesList.forEach(currencies=> { %>
-            <p>
-                <%= currencies.currency %>
-            </p><input type="text" id="<%= currencies.currency %>" name="<%= currencies.currency %>"
+            <input type="hidden" id="<%= currencies.currency %>" name="<%= currencies.currency %>"
                 value="<%= currencies.available_money %>">
 
 
@@ -89,13 +87,15 @@
                     document.getElementById('available_money').value = availableMoney
                     document.getElementById('lavailable_money').value = LaberAvailableMoney
                     document.getElementById('available_currency_money').value = CurrencyAvailableMoney
+
                     alert(availableMoney);
-                    
-                    if (availableMoney > quote_amount) {
+                    alert(quote_amount);
+                    if (parseFloat(availableMoney) > parseFloat(quote_amount)) {
                         document.getElementById("button").disabled = false;
                     }
-                    else{
+                    else {
                         document.getElementById("button").disabled = true;
+                        alert("there is not enough budget");
                     }
                 }
             </script>
