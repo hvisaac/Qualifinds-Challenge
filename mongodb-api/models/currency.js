@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const currencySchema = new Schema(
     { 
         currency: { type: String },   
-        available_money: { type: String }
+        available_money: { type: mongoose.Decimal128 }
     }
 );
 

@@ -22,10 +22,11 @@ const addquery = (req, res) => {
         name: req.body.name,
         number: req.body.number,
         currency: req.body.currency,
-        cotize: req.body.cotize,   
+        quote: req.body.quote,   
         currency_amount: req.body.currency_amount,
-        cotize_amount: req.body.cotize_amount,
-        available_money: req.body.available_money 
+        quote_amount: req.body.quote_amount,
+        available_money: req.body.available_money, 
+        fee_cost: req.body.fee_cost
     })
 
     Query.save((err, usr) => {

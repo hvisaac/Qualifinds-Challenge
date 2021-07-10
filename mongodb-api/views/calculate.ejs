@@ -26,10 +26,13 @@
             <script>
                 function calculate() {
                     var currency = document.getElementById('currencys').value
-                    var cotize = document.getElementById('cotize').value
-                    currency_cotize = currency + '_' + cotize
-                    document.getElementById('Label_cotize').value = document.getElementById('currency_amount').value * document.getElementById(currency_cotize).value;
-                    document.getElementById('cotize_amount').value = document.getElementById('currency_amount').value * document.getElementById(currency_cotize).value;
+                    var quote = document.getElementById('quote').value
+                    currency_quote = currency + '_' + quote
+                    document.getElementById('Label_quote').value = document.getElementById('currency_amount').value * document.getElementById(currency_quote).value;
+                    document.getElementById('quote_amount').value = document.getElementById('currency_amount').value * document.getElementById(currency_quote).value;
+                    var fee_cost = document.getElementById(currency_quote).value    
+                    document.getElementById("LFee_cost").value = fee_cost
+                    document.getElementById("fee_cost").value = fee_cost
                 }
 
             </script>
@@ -45,11 +48,11 @@
                     <option value="CAD"> CAD </option>
                     <option value="NZD"> NZD </option>
                 </select>
-                <label> amount </label>
+                <label> Amount </label>
                 <input name="currency_amount" value="1" id="currency_amount" onkeyup="calculate()">
                 <br>
-                <select id="cotize" name="cotize" onchange="calculate()">
-                    <option disabled selected> Select a currency to cotize </option>
+                <select id="quote" name="quote" onchange="calculate()">
+                    <option disabled selected> Select a currency to quote </option>
                     <option value="USD"> USD </option>
                     <option value="EUR"> EUR </option>
                     <option value="JPY"> JPY </option>
@@ -59,11 +62,12 @@
                     <option value="CAD"> CAD </option>
                     <option value="NZD"> NZD </option>
                 </select>
-                <label> cotize amount </label> <input type="text" disabled id="Label_cotize">
-                <input type="hidden" name="cotize_amount" id="cotize_amount">
+                <label> Amount </label> <input type="text" disabled id="Label_quote">
+                <input type="hidden" name="quote_amount" id="quote_amount">
                 <br>
-                <label> the difference between the two currencies is </label>
-                <br>
+                <label> Fee Cost </label> <br> 
+                <input id="fee_cost" name="fee_cost" type="hidden" >
+                <input type="text" disabled id="LFee_cost" name="LFee_cost">                
                 <br>              
                 <button> Exchange Currency </button>
             </form>
