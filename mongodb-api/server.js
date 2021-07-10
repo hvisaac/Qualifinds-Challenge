@@ -5,6 +5,7 @@ const Querys = require('./api/querys');
 const Currencys = require('./api/currencys');
 
 const app = express();
+app.use (express.static(__dirname + '/css'));
 const ejs = require('ejs');
 const currency = require('./models/currency');
 const router = require('./api/querys');

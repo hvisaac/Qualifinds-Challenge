@@ -5,8 +5,66 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Calculate</title>
+    <link type=“text/css” rel=”stylesheet” href="../css/calculate.css">
 </head>
+<style>
+    * {
+        margin: auto;
+        padding: auto;
+    }
+
+    body {
+        background-image: url(../images/banderas.jpg);
+
+    }
+
+    form {
+        border-radius: 10px;
+        border: 100px;
+        margin-top: 10%;
+        margin-left: 30%;
+        margin-right: 30%;
+        background-color: cadetblue;
+        box-shadow: 0px 0px 10px 10px #ec731e;
+        -webkit-box-shadow: 0px 0px 10px 10px #ec731e;
+        transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+
+    }
+
+    form select {
+        border-radius: 5px;
+        padding: 5px;
+        margin: 5px;
+    }
+
+    button {
+        border-radius: 15px;
+        padding: 15px;
+        margin: 5px;
+    }
+
+    button:hover {
+        cursor: pointer;
+        color: rgb(252, 113, 0);
+        background: #444;
+        border-left: 5px solid #444;
+        transition: 1s;
+    }
+
+    input {
+        border-radius: 5px;
+        padding: 5px;
+        margin: 5px;
+    }
+
+    label {
+        border-radius: 5px;
+        padding: 5px;
+        margin: 5px;
+    }
+</style>
 
 <body>
 
@@ -30,13 +88,13 @@
                     currency_quote = currency + '_' + quote
                     document.getElementById('Label_quote').value = document.getElementById('currency_amount').value * document.getElementById(currency_quote).value;
                     document.getElementById('quote_amount').value = document.getElementById('currency_amount').value * document.getElementById(currency_quote).value;
-                    var fee_cost = document.getElementById(currency_quote).value    
+                    var fee_cost = document.getElementById(currency_quote).value
                     document.getElementById("LFee_cost").value = fee_cost
                     document.getElementById("fee_cost").value = fee_cost
                 }
 
             </script>
-            <form action="/exchange" method="POST">          
+            <form id="form" action="/exchange" method="POST">
                 <select id="currencys" name="currency" onchange="calculate()">
                     <option disabled selected> Select a currency </option>
                     <option value="USD"> USD </option>
@@ -65,10 +123,10 @@
                 <label> Amount </label> <input type="text" disabled id="Label_quote">
                 <input type="hidden" name="quote_amount" id="quote_amount">
                 <br>
-                <label> Fee Cost </label> <br> 
-                <input id="fee_cost" name="fee_cost" type="hidden" >
-                <input type="text" disabled id="LFee_cost" name="LFee_cost">                
-                <br>              
+                <label> Fee Cost </label> <br>
+                <input id="fee_cost" name="fee_cost" type="hidden">
+                <input type="text" disabled id="LFee_cost" name="LFee_cost">
+                <br>
                 <button> Exchange Currency </button>
             </form>
 </body>

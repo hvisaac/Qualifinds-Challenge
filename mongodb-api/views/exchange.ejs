@@ -5,8 +5,70 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>Document</title>
+    <title>Exchange</title>
 </head>
+<style>
+    * {
+        margin: auto;
+        padding: auto;
+    }
+
+    body {
+        background-image: url(../images/banderas.jpg);
+
+    }
+
+    form {
+        border-radius: 10px;
+        border: 100px;
+        padding: 2%;
+        margin-top: 10%;
+        margin-left: 30%;
+        margin-right: 30%;
+        background-color: cadetblue;
+        box-shadow: 0px 0px 10px 10px #ec731e;
+        -webkit-box-shadow: 0px 0px 10px 10px #ec731e;
+        transform: rotate(360deg);
+        text-align: center;
+        -webkit-transform: rotate(360deg);
+
+    }
+
+    form select {
+        border-radius: 5px;
+        padding: 5px;
+        margin: 5px;
+    }
+
+    button {
+        border-radius: 15px;
+        padding: 15px;
+        margin: 5px;
+    }
+
+    button:hover {
+        cursor: pointer;
+        color: rgb(253, 137, 4);
+        background: #444;
+        border-left: 5px solid #444;
+        transition: 1s;
+    }
+
+    input {
+        border-radius: 5px;
+        padding: 5px;
+        margin: 5px;
+    }
+
+    label {
+        border-radius: 5px;
+        padding: 5px;
+        margin: 15px;
+        text-justify: auto;
+        text-align: center;
+        margin-left: 30%;
+    }
+</style>
 
 <body onload="available_money()">
     <form action="/add" method="POST">
