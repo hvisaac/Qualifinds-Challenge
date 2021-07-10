@@ -73,20 +73,33 @@
 <body onload="available_money()">
     <form action="/add" method="POST">
         <% currenciesList.forEach(currencies=> { %>
-            <input type="hidden" id="<%= currencies.currency %>" name="<%= currencies.currency %>"
+            <p>
+                <%= currencies.currency %>
+            </p><input type="text" id="<%= currencies.currency %>" name="<%= currencies.currency %>"
                 value="<%= currencies.available_money %>">
-            
-        <%})%>
 
-                <script>
-                    function available_money(){
-                        
-                        document.getElementById('available_money').value = document.getElementById(quote.value).value
-                        document.getElementById('lavailable_money').value = document.getElementById(quote.value).value
-                        document.getElementById('available_currency_money').value = document.getElementById(currency.value).value
+
+
+            <script>
+                function available_money() {
+                    var quote_amount = document.getElementById("quote_amount").value;
+                    var availableMoney = document.getElementById(quote.value).value;
+                    var LaberAvailableMoney = document.getElementById(quote.value).value;
+                    var CurrencyAvailableMoney = document.getElementById(currency.value).value;
+                    document.getElementById('available_money').value = availableMoney
+                    document.getElementById('lavailable_money').value = LaberAvailableMoney
+                    document.getElementById('available_currency_money').value = CurrencyAvailableMoney
+                    alert(availableMoney);
+                    
+                    if (availableMoney > quote_amount) {
+                        document.getElementById("button").disabled = false;
                     }
-                </script>
-
+                    else{
+                        document.getElementById("button").disabled = true;
+                    }
+                }
+            </script>
+            <%})%>
                 <p> <input type="text" placeholder="Name" id="name" name="name"> </p>
                 <p> <input type="text" placeholder="Number" id="number" name="number"> </p>
 
@@ -100,12 +113,13 @@
                 </p>
 
                 <p>Quote Amount: <%= quote_amount %>
-                        <input name="quote_amount" type="hidden" value="<%= quote_amount %>">
+                        <input id="quote_amount" name="quote_amount" type="hidden" value="<%= quote_amount %>">
                         <%= quote %>
                 </p>
 
                 <p> Available Money: <input name=" lavailable_money" id="lavailable_money" disabled>
-                    <input value="" id="available_money" name="available_money" type="hidden">
+                    <input oninput="availableMoneys()" value="" id="available_money" name="available_money"
+                        type="hidden">
                     <input value="" id="available_currency_money" name="available_currency_money" type="hidden">
                     <%= quote %>
                 </p>
@@ -113,7 +127,8 @@
                 <p> Fee Cost: <%= fee_cost %>
                         <%= quote %>
                 </p>
-                <button> SAVE </button>
+
+                <button id="button" name="button"> SAVE </button>
     </form>
 </body>
 
